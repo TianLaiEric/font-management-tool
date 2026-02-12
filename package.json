@@ -15,10 +15,10 @@
 "opentype.js": "^1.3.4"
 },
 "build": {
-"appId": "com.font.management",
-"productName": "字体管理工具",
-"win": {
-"target": "nsis"
-}
-}
+  "appId": "com.font.management",
+  "productName": "字体管理工具",
+  "publish": null,
+  "win": {
+    "target": "nsis"
+  }
 }
