@@ -1,32 +1,29 @@
 name: Build Windows App
 
-
 on:
-push:
-branches: [ main ]
-
+  push:
+    branches:
+      - main
 
 jobs:
-build:
-runs-on: windows-latest
+  build:
+    runs-on: windows-latest
 
+    steps:
+    - uses: actions/checkout@v3
 
-steps:
-- uses: actions/checkout@v3
+    - name: Setup Node
+      uses: actions/setup-node@v3
+      with:
+        node-version: 18
 
+    - name: Install dependencies
+      run: npm install
 
-- name: Setup Node
-uses: actions/setup-node@v3
-with:
-node-version: 18
+    - name: Build exe
+      run: npm run build
 
-
-- run: npm install
-- run: npm run build
-
-
-- name: Upload Artifact
-uses: actions/upload-artifact@v3
-with:
-name: Windows-Build
-path: dist/*.exe
+    - uses: actions/upload-artifact@v3
+      with:
+        name: Windows-Build
+        path: dist/*.exe
